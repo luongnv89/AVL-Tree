@@ -1,12 +1,30 @@
 #include <limits.h>
-#include <iostream>
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "unistd.h"
+#include <time.h>
 #include "../avltree.h"
 #include "gtest/gtest.h"
 using namespace std;
+
+int number_exists(int nb, int array[],int length){
+    int i = 0;
+    for( i =0 ; i < length; i ++){
+        if(array[i] == nb) return 1;
+    }
+    return 0;
+}
+
+
+int get_random_number(int max,int array[], int length){
+    srand(time(NULL)); 
+    int nb = rand()%max;
+    while(nb == 0 || number_exists(nb,array,length) == 1){
+        nb = rand()%max;
+    }
+    return nb;
+}
 
 class avltree_test : public testing::Test {
 
@@ -14,12 +32,17 @@ protected:
 
     void SetUp() {
         node = avltree_new();
+        int i = 0;
+        
+        for(i = 0; i < 8; i ++){
+            keys[i] = get_random_number(10,keys,i);
+        }
     }
 
     void TearDown() {
     }
     avltree_t * node;
-    int keys[8]={1,4,5,6,3,2,9,8};
+    int keys[8];
 };
 
 TEST_F(avltree_test, avltree_new) {
