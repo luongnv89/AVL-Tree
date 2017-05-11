@@ -1,6 +1,6 @@
 before_install:
     - sudo apt-get update -y
-    - sudo apt-get install -y cmake git libpth-dev libconfuse-dev
+    - sudo apt-get install -y cmake git libpth-dev libconfuse-dev libstdc++6
     # Install GoogleTest: https://github.com/google/googletest/tree/master/googletest
     - git clone https://github.com/google/googletest.git
     - cd googletest/googletest/ 
