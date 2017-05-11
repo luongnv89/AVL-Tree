@@ -4,7 +4,7 @@ GIT_VERSION := $(shell git log --format="%h" -n 1)
 CPP = g++
 
 CFLAGS = -Wall -Wno-write-strings -DVERSION=\"$(VERSION)\" -DGIT_VERSION=\"$(GIT_VERSION)\"
-LIBS = -ldl -lgtest -lpthread
+LIBS = -lgtest -lpthread
 
 # Define DEBUG
 ifdef DEBUG
