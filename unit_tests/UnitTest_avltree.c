@@ -8,7 +8,7 @@
 #include "gtest/gtest.h"
 using namespace std;
 
-int number_exists(int nb, int array[], int length) {
+int number_exists(uint32_t nb, uint32_t array[], int length) {
     int i = 0;
     for ( i = 0 ; i < length; i ++) {
         if (array[i] == nb) return 1;
@@ -17,7 +17,7 @@ int number_exists(int nb, int array[], int length) {
 }
 
 
-int get_random_number(int max, int array[], int length) {
+int get_random_number(uint32_t max, uint32_t array[], int length) {
     srand(time(NULL));
     int nb = rand() % max;
     while (nb == 0 || number_exists(nb, array, length) == 1) {
@@ -49,7 +49,7 @@ protected:
         for (i = 0; i < 8; i++) {
             char * data = NULL;
             data = (char *) malloc(sizeof(char) * 7);
-            sprintf(data, "Data-%d", keys[i]);
+            sprintf(data, "Data-%u", keys[i]);
             data[6] = '\0';
             avltree_t * new_node = avltree_create(keys[i], data);
             if (new_node != NULL) {
@@ -66,7 +66,7 @@ protected:
 
     avltree_t * node, *node2, *root;
     char * data;
-    int keys[8];
+    uint32_t keys[8];
 };
 
 TEST_F(avltree_test, avltree_new) {

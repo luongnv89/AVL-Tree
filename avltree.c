@@ -29,7 +29,7 @@ avltree_t * avltree_new() {
  * @return      NULL if cannot allocate memory for a new AVL Tree node
  *                   a pointer points to new AVL Tree node with given key and data
  */
-avltree_t * avltree_create(int key, void * data){
+avltree_t * avltree_create(uint32_t key, void * data){
     avltree_t * node = avltree_new();
     if(node != NULL){
         node->key = key;
@@ -50,7 +50,7 @@ void avltree_free_node(avltree_t * node) {
         node->parent = 0x0;
         node->left_child = 0x0;
         node->right_child = 0x0;
-        if(node->data!=NULL) free(node->data);
+        // if(node->data!=NULL) free(node->data);
         node->data = 0x0;
         free(node);
     }
@@ -77,7 +77,7 @@ void avltree_free_tree(avltree_t * node){
  * @param  node AVL Tree node
  * @return      the key of given AVL Tree node
  */
-int avltree_get_key(avltree_t * node){
+uint32_t avltree_get_key(avltree_t * node){
     if (node == NULL) return 0;
     return node->key;
 };
@@ -336,7 +336,7 @@ avltree_t * avltree_insert(avltree_t * root, avltree_t * node) {
  * @return      NULL - if there isn't any node in given AVL Tree which has the given key value
  *                   a pointer points to the node which has given key value
  */
-avltree_t * avltree_find(avltree_t * root, int key) {
+avltree_t * avltree_find(avltree_t * root, uint32_t key) {
     if (root == NULL) return NULL;
     if (root->key == key ) return root;
     if ( root->key > key) {
@@ -364,7 +364,7 @@ void avltree_show_node(avltree_t * node){
     if(node == NULL){
         printf("\"NULL\"");
     }else{
-        printf("{Key: %d, Left: %d, Right: %d}\n",node->key,node->left_child==NULL?0:node->left_child->key, node->right_child==NULL?0:node->right_child->key);
+        printf("{Key: %u, Left: %u, Right: %u}\n",node->key,node->left_child==NULL?0:node->left_child->key, node->right_child==NULL?0:node->right_child->key);
     }
 }
 

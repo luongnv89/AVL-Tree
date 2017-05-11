@@ -5,12 +5,12 @@
 
 #ifndef AVLTREE_H
 #define AVLTREE_H
-
+#include "stdint.h"
 /**
  * Present an AVL Tree node
  */
 typedef struct avltree_struct {
-	int key; // Key of the node
+	uint32_t key; // Key of the node
 	void * data; // data of the node - use void pointer to have flexible in implementation
 	struct avltree_struct * parent; // Parent of current node
 	struct avltree_struct * left_child; // left child of current node: which contains all the node with the key smaller than the key of current node
@@ -31,7 +31,7 @@ avltree_t * avltree_new();
  * @return      NULL if cannot allocate memory for a new AVL Tree node
  *                   a pointer points to new AVL Tree node with given key and data
  */
-avltree_t * avltree_create(int key, void * data);
+avltree_t * avltree_create(uint32_t key, void * data);
 
 /**
  * Free an AVL Tree node
@@ -66,7 +66,7 @@ void avltree_free_tree(avltree_t * node);
  * @param  node AVL Tree node
  * @return      the key of given AVL Tree node
  */
-int avltree_get_key(avltree_t * node);
+uint32_t avltree_get_key(avltree_t * node);
 
 /**
  * Get the data of an AVL Tree node
@@ -126,7 +126,7 @@ avltree_t * avltree_insert(avltree_t * root, avltree_t * node);
  * @return      NULL - if there isn't any node in given AVL Tree which has the given key value
  *                   a pointer points to the node which has given key value
  */
-avltree_t * avltree_find(avltree_t * root, int key);
+avltree_t * avltree_find(avltree_t * root, uint32_t key);
 
 /**
  * Show current AVL Tree structure
