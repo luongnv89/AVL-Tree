@@ -23,20 +23,74 @@ avltree_t * avltree_new() {
 };
 
 /**
+ * Create a new avltree node from given key and data
+ * @param  key  key of new AVL Tree node
+ * @param  data the pointer points to the data
+ * @return      NULL if cannot allocate memory for a new AVL Tree node
+ *                   a pointer points to new AVL Tree node with given key and data
+ */
+avltree_t * avltree_create(int key, void * data){
+    avltree_t * node = avltree_new();
+    if(node != NULL){
+        node->key = key;
+        node->data = data;
+        return node;
+    }
+    return NULL;
+};
+
+
+/**
  * Free an AVL Tree node
  * @param node AVL Tree node to be free
  */
-void avltree_free(avltree_t * node) {
+void avltree_free_node(avltree_t * node) {
     if (node != 0x0) {
         node->key = 0;
         node->parent = 0x0;
         node->left_child = 0x0;
         node->right_child = 0x0;
+        if(node->data!=NULL) free(node->data);
         node->data = 0x0;
         free(node);
     }
 };
 
+
+/**
+ * Free an AVL Tree tree
+ * @param node root of the AVL Tree
+ */
+void avltree_free_tree(avltree_t * node){
+    if(node == NULL) return;
+    // Free left subtree
+    if(node->left_child!=NULL) avltree_free_tree(node->left_child);
+    // Free right subtree
+    if(node->right_child!=NULL) avltree_free_tree(node->right_child);
+
+    // Free root
+    avltree_free_node(node);
+};
+
+/**
+ * Get the key of an AVL Tree node
+ * @param  node AVL Tree node
+ * @return      the key of given AVL Tree node
+ */
+int avltree_get_key(avltree_t * node){
+    if (node == NULL) return 0;
+    return node->key;
+};
+
+/**
+ * Get the data of an AVL Tree node
+ * @param  node AVL Tree node
+ * @return      the pointer points to the data of given AVL Tree node
+ */
+void * avltree_get_data(avltree_t * node){
+    if(node == NULL) return NULL;
+    return node->data;
+};
 
 /**
  * Get the height of a node - the height of a node is the number of level from given node to the farthest leaf

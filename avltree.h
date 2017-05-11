@@ -25,11 +25,55 @@ typedef struct avltree_struct {
 avltree_t * avltree_new();
 
 /**
+ * Create a new avltree node from given key and data
+ * @param  key  key of new AVL Tree node
+ * @param  data the pointer points to the data
+ * @return      NULL if cannot allocate memory for a new AVL Tree node
+ *                   a pointer points to new AVL Tree node with given key and data
+ */
+avltree_t * avltree_create(int key, void * data);
+
+/**
  * Free an AVL Tree node
  * @param node AVL Tree node to be free
  */
-void avltree_free(avltree_t * node);
+void avltree_free_node(avltree_t * node);
 
+/**
+ * Free an AVL Tree tree
+ * @param node root of the AVL Tree
+ */
+void avltree_free_tree(avltree_t * node);
+
+/**
+ * Set the key for an AVL Tree node
+ * @param  key given key to set
+ * @return     1 - success
+ *               0 - failed
+ */
+// int avltree_set_key(int key);
+
+/**
+ * Set data for an AVL Tree node
+ * @param  data pointer points to the data
+ * @return      1 - success
+ *                0 - failed
+ */
+// int avltree_set_data(void * data);
+
+/**
+ * Get the key of an AVL Tree node
+ * @param  node AVL Tree node
+ * @return      the key of given AVL Tree node
+ */
+int avltree_get_key(avltree_t * node);
+
+/**
+ * Get the data of an AVL Tree node
+ * @param  node AVL Tree node
+ * @return      the pointer points to the data of given AVL Tree node
+ */
+void * avltree_get_data(avltree_t * node);
 
 /**
  * Get the height of a node - the height of a node is the number of level from given node to the farthest leaf
