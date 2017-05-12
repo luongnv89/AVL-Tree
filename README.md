@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/luongnv89/AVL-tree.svg?branch=master)](https://travis-ci.org/luongnv89/AVL-tree)
+[![Build Status](https://travis-ci.org/luongnv89/avltree.svg?branch=master)](https://travis-ci.org/luongnv89/avltree)
 
 ### Introduction
 
