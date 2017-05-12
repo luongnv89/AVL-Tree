@@ -53,9 +53,14 @@ protected:
             data[6] = '\0';
             avltree_t * new_node = avltree_create(keys[i], data);
             if (new_node != NULL) {
+                printf("root before inserting: \n");
+                avltree_show_node(root);
                 root = avltree_insert(root, new_node);
+                printf("root after inserting: \n");
+                avltree_show_node(root);
             }
-        }        
+        }
+
     }
 
     void TearDown() {
@@ -134,5 +139,15 @@ TEST_F(avltree_test, avltree_get_data) {
     EXPECT_STREQ((char*)avltree_get_data(found_node), data);
     avltree_show_node(found_node);
 }
+
+TEST_F(avltree_test, avltree_show_tree) {
+    printf("Before inserting new node\n");
+    avltree_show_tree(root);
+    printf("After inserting new node\n");
+    root = avltree_insert(root, node2);
+    avltree_show_tree(root);
+}
+
+
 
 
