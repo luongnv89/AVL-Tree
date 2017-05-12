@@ -140,4 +140,20 @@ void avltree_show_tree(avltree_t * node);
  */
 void avltree_show_node(avltree_t * node);
 
+/**
+ * Validate a AVL Tree is a valid one
+ * @param  node root of the tree
+ * @return      0 - if the AVL Tree has balanced factor is more than 2
+ *              0 - any its subtree is invalid
+ *              1 - if the AVL Tree is valid
+ */
+int avltree_valid(avltree_t * node);
+
+/**
+ * Get the number of node in the tree
+ * @param  node root of the tree
+ * @return      number of node on the tree
+ */
+int avltree_size(avltree_t * node);
+
 #endif // End of AVLTREE_H
