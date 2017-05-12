@@ -69,6 +69,17 @@ void avltree_show_tree(avltree_t * node);
 
 Print out an AVL Tree node
 
+```
+int avltree_valid(avltree_t * node);
+```
+
+Validate a AVL Tree. Return 0 if the AVL Tree is not valid
+
+```
+int avltree_size(avltree_t * node);
+```
+
+Get the size of a given AVL TREE node
 
 ### Install
 
