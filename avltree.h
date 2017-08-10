@@ -78,9 +78,13 @@ void * avltree_get_data(avltree_t * node);
 /**
  * Get the height of a node - the height of a node is the number of level from given node to the farthest leaf
  * @param  node given node to calculate the height
+ * @param current_level current level of given node
  * @return      the number of node on the path from current node to the farthest leaf
+ *                  current_level - 1: if given node == NULL
+ *                  1 if this is the root of the tree
+ *                  maximum value between left tree and right tree
  */
-// int avltree_get_height(avltree_t * node);
+int avltree_get_height(avltree_t * node, int current_level);
 
 /**
  * Perform left rotation to keep the Tree balance
