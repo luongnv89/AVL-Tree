@@ -1,5 +1,10 @@
 [![Build Status](https://travis-ci.org/luongnv89/avltree.svg?branch=master)](https://travis-ci.org/luongnv89/avltree)
 
+<a href="https://scan.coverity.com/projects/luongnv89-avl-tree">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/14617/badge.svg"/>
+</a>
+
 ### Introduction
 
 A simple c/cpp API for implementing AVL Tree as a data structure
